@@ -1,0 +1,92 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  padding: 2rem;
+}
+
+#typewriter {
+  color: rgb(119, 0, 255);
+}
+
+header {
+  text-align: left;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.boxes-container {
+  display: flex;
+  justify-content: left;
+  gap: 20px;
+}
+
+#discordLogo {
+  width: 50px;
+  transition: ease-in-out 0.25s;
+}
+#discordLogo:hover {
+  filter: drop-shadow(0 0 1em rgb(95, 95, 255));
+}
+#instagramLogo {
+  width: 42.5px;
+  padding-left: 20px;
+  padding-bottom: 3px;
+  transition: ease-in-out 0.25s;
+}
+#instagramLogo:hover {
+  filter: drop-shadow(0 0 1em rgb(255, 40, 112));
+}
+#XLogo {
+  width: 42.5px;
+  padding-left: 20px;
+  padding-bottom: 3px;
+  transition: ease-in-out 0.25s;
+}
+#XLogo:hover {
+  filter: drop-shadow(0 0 1em rgb(255, 255, 255));
+}
+
+.box {
+  width: 500px;
+  height: 300px;
+  border-radius: 20px;
+  border: 1px solid rgb(26, 26, 26);
+  background-color: rgb(26, 26, 26);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  transition: ease-in-out 0.25s;
+}
+.box:hover {
+  box-shadow: 9px 9px 0px black;
+}
+
+.divider {
+  width: 55px;
+}
+
+.arrow {
+  width: 900px;
+  padding-left: 600px;
+}
+
+main {
+  padding-top: 15em;
+}
