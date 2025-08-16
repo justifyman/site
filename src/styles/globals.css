@@ -40,6 +40,16 @@
 
 /* global elements */
 @layer base {
+  /* Hide default cursor when using custom cursor */
+  html, body {
+    cursor: none !important;
+  }
+  
+  /* Custom cursor behavior for interactive elements */
+  a, button, input, textarea, select, [role="button"], [data-cursor="pointer"] {
+    cursor: none !important;
+  }
+  
   html[data-scroll-orientation="horizontal"] {
     body {
       @apply w-fit;
@@ -55,7 +65,8 @@
     @apply antialiased;
   }
   body {
-    @apply bg-background text-foreground cursor-wait;
+    @apply bg-background text-foreground;
+    cursor: none !important;
   }
   section {
     scroll-margin-top: 60px;

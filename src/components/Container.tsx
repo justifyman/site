@@ -102,12 +102,21 @@ export default function Container(props: ContainerProps) {
 
   // scroll to top on load
   useEffect(() => {
-    document.body.style.cursor = "default";
+    // Don't reset cursor to default as we're using a custom cursor
+    // document.body.style.cursor = "default";
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <>
+      <Head>
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:type" content={meta.type} />
+        {meta.image && <meta property="og:image" content={meta.image} />}
+      </Head>
       <nav
         className={cn(
           styles.nav,

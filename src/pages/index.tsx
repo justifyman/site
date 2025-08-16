@@ -191,11 +191,14 @@ export default function Home() {
               data-scroll-speed=".06"
               className="flex flex-row items-center space-x-1.5 pt-6"
             >
-              <Link href="mailto:manjustify@gmail.com" passHref>
-                <Button>
-                  Get in touch <ChevronRight className="ml-1 h-4 w-4" />
-                </Button>
-              </Link>
+              <Button
+                className="bg-[#7b82fe] text-black"
+                variant="outline"
+                onClick={() => scrollTo(document.querySelector("#contact"))}
+              >
+                Get in touch <ChevronRight className="ml-1 h-4 w-4" />
+              </Button>
+
               <Button
                 variant="outline"
                 onClick={() => scrollTo(document.querySelector("#about"))}
@@ -236,55 +239,34 @@ export default function Home() {
               <div className="flex-1 overflow-auto px-8 py-6 font-mono text-sm">
                 <div className="flex">
                   <span className="mr-2 text-[#27c93f]">➜</span>
-                  <span className="mr-2 text-gray-400">~/projects</span>
-                  <span className="text-white">ls -la</span>
+                  <span className="mr-2 text-gray-400">~/code</span>
+                  <span className="text-white">ls</span>
                 </div>
                 <div className="mt-2 text-gray-300">
-                  <div className="grid grid-cols-5 gap-2">
-                    <span>drwxr-xr-x</span>
-                    <span>justify</span>
-                    <span>staff</span>
-                    <span>224B</span>
-                    <span>portfolio</span>
-                  </div>
-                  <div className="grid grid-cols-5 gap-2">
-                    <span>drwxr-xr-x</span>
-                    <span>justify</span>
-                    <span>staff</span>
-                    <span>192B</span>
-                    <span>react-app</span>
-                  </div>
-                  <div className="grid grid-cols-5 gap-2">
-                    <span>drwxr-xr-x</span>
-                    <span>justify</span>
-                    <span>staff</span>
-                    <span>160B</span>
-                    <span>next-project</span>
+                  <div className="grid grid-cols-1 gap-1">
+                    <span>client-projects</span>
+                    <span>personal-site</span>
+                    <span>open-source</span>
                   </div>
                 </div>
 
                 <div className="mt-4 flex">
                   <span className="mr-2 text-[#27c93f]">➜</span>
-                  <span className="mr-2 text-gray-400">~/projects</span>
-                  <span className="text-white">cd portfolio</span>
+                  <span className="mr-2 text-gray-400">~/code</span>
+                  <span className="text-white">cd personal-site</span>
                 </div>
 
                 <div className="mt-4 flex">
                   <span className="mr-2 text-[#27c93f]">➜</span>
                   <span className="mr-2 text-gray-400">
-                    ~/projects/portfolio
+                    ~/code/personal-site
                   </span>
-                  <span className="text-white">npm start</span>
+                  <span className="text-white">npm run dev</span>
                 </div>
 
                 <div className="mt-2 text-gray-300">
-                  <div>Starting development server...</div>
-                  <div className="mt-1">Compiled successfully!</div>
-                  <div className="mt-1 text-gray-400">
-                    You can now view portfolio in the browser.
-                  </div>
+                  <div>React.js app ready!</div>
                   <div className="mt-2">
-                    Local:{" "}
                     <span className="text-[#61afef]">
                       http://localhost:3000
                     </span>
@@ -294,7 +276,7 @@ export default function Home() {
                 <div className="mt-4 flex items-center">
                   <span className="mr-2 text-[#27c93f]">➜</span>
                   <span className="mr-2 text-gray-400">
-                    ~/projects/portfolio
+                    ~/code/personal-site
                   </span>
                   <span className="text-white">_</span>
                   <span className="ml-1 h-5 w-2 animate-pulse bg-white"></span>
@@ -365,103 +347,116 @@ export default function Home() {
             </h2>
             <p className="mt-1.5 text-base tracking-tight text-muted-foreground xl:text-lg">
               I&apos;ve worked on a variety of projects, here are some of my
-              favorites: <br />
-              <u>SCROLL WITH LEFT CLICK TO SEE MORE!!</u>
+              favorites:
             </p>
 
-            {/* Carousel */}
+            {/* Projects Grid */}
             <div className="mt-14">
-              <Carousel setApi={setCarouselApi} className="w-full">
-                <CarouselContent className="flex space-x-6">
-                  {/* MuslimThread */}
-                  <CarouselItem className="w-full flex-none md:w-1/2">
-                    <Card id="tilt">
-                      <CardHeader className="p-0">
-                        <Link
-                          href="https://muslimthread.com"
-                          target="_blank"
-                          passHref
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                {/* MuslimThread */}
+                <div>
+                  <Card id="tilt">
+                    <CardHeader className="p-0">
+                      <Link
+                        href="https://muslimthread.com"
+                        target="_blank"
+                        passHref
+                      >
+                        <Image
+                          src="/muslimthread.png"
+                          alt="MuslimThread"
+                          width={600}
+                          height={300}
+                          quality={100}
+                          className="aspect-video h-full w-full rounded-t-md bg-primary object-cover"
+                        />
+                      </Link>
+                    </CardHeader>
+                    <CardContent className="absolute bottom-0 w-full bg-background/50 backdrop-blur">
+                      <CardTitle className="border-t border-white/5 p-4 text-base font-normal tracking-tighter">
+                        A list of Islamic resources, piled all into one website.
+                      </CardTitle>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* NoorNet */}
+                <div>
+                  <Card id="tilt">
+                    <CardHeader className="p-0">
+                      <Link href="https://noornet.xyz" target="_blank" passHref>
+                        <Image
+                          src="/noornet.png"
+                          alt="NoorNet"
+                          width={600}
+                          height={300}
+                          quality={100}
+                          className="aspect-video h-full w-full rounded-t-md bg-primary object-cover"
+                        />
+                      </Link>
+                    </CardHeader>
+                    <CardContent className="absolute bottom-0 w-full bg-background/50 backdrop-blur">
+                      <CardTitle className="border-t border-white/5 p-4 text-base font-normal tracking-tighter">
+                        An Islamic search engine with curated, trustworthy
+                        results.
+                      </CardTitle>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Ijaba */}
+                <div>
+                  <Card id="tilt">
+                    <CardHeader className="p-0">
+                      <Link href="https://ijaba.app" target="_blank" passHref>
+                        <Image
+                          src="/ijaba.png"
+                          alt="Ijaba"
+                          width={600}
+                          height={300}
+                          quality={100}
+                          className="aspect-video h-full w-full rounded-t-md bg-primary object-cover"
+                        />
+                      </Link>
+                    </CardHeader>
+                    <CardContent className="absolute bottom-0 w-full bg-background/50 backdrop-blur">
+                      <CardTitle className="border-t border-white/5 p-4 text-base font-normal tracking-tighter">
+                        Client site made with React and Tailwind
+                      </CardTitle>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Coming Soon */}
+                <div>
+                  <Card id="tilt">
+                    <CardHeader className="p-0">
+                      <div className="flex aspect-video h-full w-full items-center justify-center rounded-t-md bg-gradient-to-br from-gray-800 to-gray-900">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="80"
+                          height="80"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="text-gray-400"
                         >
-                          <Image
-                            src="/muslimthread.png"
-                            alt="MuslimThread"
-                            width={600}
-                            height={300}
-                            quality={100}
-                            className="aspect-video h-full w-full rounded-t-md bg-primary object-cover"
-                          />
-                        </Link>
-                      </CardHeader>
-                      <CardContent className="absolute bottom-0 w-full bg-background/50 backdrop-blur">
-                        <CardTitle className="border-t border-white/5 p-4 text-base font-normal tracking-tighter">
-                          A list of Islamic resources, piled all into one
-                          website.
-                        </CardTitle>
-                      </CardContent>
-                    </Card>
-                  </CarouselItem>
-
-                  {/* NoorNet */}
-                  <CarouselItem className="w-full flex-none md:w-1/2">
-                    <Card id="tilt">
-                      <CardHeader className="p-0">
-                        <Link
-                          href="https://noornet.xyz"
-                          target="_blank"
-                          passHref
-                        >
-                          <Image
-                            src="/noornet.png"
-                            alt="NoorNet"
-                            width={600}
-                            height={300}
-                            quality={100}
-                            className="aspect-video h-full w-full rounded-t-md bg-primary object-cover"
-                          />
-                        </Link>
-                      </CardHeader>
-                      <CardContent className="absolute bottom-0 w-full bg-background/50 backdrop-blur">
-                        <CardTitle className="border-t border-white/5 p-4 text-base font-normal tracking-tighter">
-                          An Islamic search engine with curated, trustworthy
-                          results.
-                        </CardTitle>
-                      </CardContent>
-                    </Card>
-                  </CarouselItem>
-
-                  {/* Ijaba */}
-                  <CarouselItem className="w-full flex-none md:w-1/2">
-                    <Card id="tilt">
-                      <CardHeader className="p-0">
-                        <Link href="https://ijaba.app" target="_blank" passHref>
-                          <Image
-                            src="/ijaba.png"
-                            alt="Ijaba"
-                            width={600}
-                            height={300}
-                            quality={100}
-                            className="aspect-video h-full w-full rounded-t-md bg-primary object-cover"
-                          />
-                        </Link>
-                      </CardHeader>
-                      <CardContent className="absolute bottom-0 w-full bg-background/50 backdrop-blur">
-                        <CardTitle className="border-t border-white/5 p-4 text-base font-normal tracking-tighter">
-                          Client site made with React and Tailwind
-                        </CardTitle>
-                      </CardContent>
-                    </Card>
-                  </CarouselItem>
-                </CarouselContent>
-
-                <CarouselPrevious />
-                <CarouselNext />
-              </Carousel>
-
-              <div className="py-2 text-center text-sm text-muted-foreground">
-                <span className="font-semibold">
-                  {current} / {count}
-                </span>{" "}
-                projects
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="absolute bottom-0 w-full bg-background/50 backdrop-blur">
+                      <CardTitle className="border-t border-white/5 p-4 text-base font-normal tracking-tighter">
+                        Coming Soon...
+                      </CardTitle>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </div>
           </div>
@@ -532,11 +527,12 @@ export default function Home() {
               I&apos;m currently available for freelance work and open to
               discussing new projects.
             </p>
-            <div className="mt-6 flex gap-4">
+            <div className="mt-6 flex gap-8">
               <a
                 href="https://www.instagram.com/justifyguy"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="transform text-muted-foreground transition-transform duration-300 hover:scale-110 hover:text-[#e91e63]"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -544,6 +540,7 @@ export default function Home() {
                   height="64"
                   viewBox="0 0 24 24"
                   fill="currentColor"
+                  className="transition-colors duration-300"
                 >
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                 </svg>
@@ -552,6 +549,7 @@ export default function Home() {
                 href="https://discord.com/users/877654517733261342/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="transform text-muted-foreground transition-transform duration-300 hover:scale-110 hover:text-[#3949ab]"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -559,6 +557,7 @@ export default function Home() {
                   height="64"
                   viewBox="0 0 24 24"
                   fill="currentColor"
+                  className="transition-colors duration-300"
                 >
                   <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z" />
                 </svg>
